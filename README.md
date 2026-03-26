@@ -6,4 +6,4 @@
 
 8============D
 
-voici le lien pour reichelt: https://www.reichelt.com/fr/fr/shop/cat%C3%A9gorie/connecteurs-7396
+voici le lien pour reichelt: https://www.reichelt.com/fr/fr/
