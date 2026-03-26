@@ -2,6 +2,6 @@
 
 ## C'est bien
 
-#####Zak Meyer
-#Nicolas
-# Zak est tord
+##### Zak Meyer
+# Nicolas
+# Zak est le GOAT
