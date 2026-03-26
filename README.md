@@ -2,4 +2,4 @@
 
 ## C'est bien
 
-####### Zak Meyer
+###### On peut avoir jusqu'à 6 # pour l'écriture la plus petite
