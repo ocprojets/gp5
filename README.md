@@ -1,6 +1,6 @@
 # YOOOOOOOOOOOOO
 
-# Welcom to Netenya
+# Welcome to Project Netenya
 
 ###### On peut avoir jusqu'à 6 # pour l'écriture la plus petite
 
