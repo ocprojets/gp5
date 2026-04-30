@@ -32,37 +32,94 @@
 
 <header>
     <h1>Rapport de Projet Informatique</h1>
-    <p>Nom : Zak Meyer</p>
-    <p>Date : 23.04.2026 </p>
+    <p>Projet : Jeu de devinette de distance</p>
+    <p>Nom : [Ton nom]</p>
+    <p>Date : [Date]</p>
 </header>
 
 <section>
     <h2>1. Introduction</h2>
-    <p>Présentation générale du projet, objectifs et contexte.</p>
+    <p>
+        Ce projet consiste à créer un jeu interactif avec un Raspberry Pi Pico.
+        L'utilisateur doit deviner une distance mesurée par un capteur.
+    </p>
 </section>
 
 <section>
     <h2>2. Description du projet</h2>
-    <p>Explication du fonctionnement du projet et des fonctionnalités principales.</p>
-</section>
-
-<section>
-    <h2>3. Technologies utilisées</h2>
+    <p>
+        Le système mesure une distance grâce à un capteur à ultrasons.
+        L'utilisateur entre sa réponse à l'aide d'un clavier.
+    </p>
+    <p>
+        Ensuite, l'écran affiche :
+    </p>
     <ul>
-        <li>HTML / CSS</li>
-        <li>JavaScript</li>
-        <li>API (ex : ChatGPT)</li>
+        <li>Si la distance réelle est <b>plus grande</b></li>
+        <li>Si elle est <b>plus petite</b></li>
+        <li>Ou si la réponse est correcte (± 2 cm)</li>
     </ul>
 </section>
 
 <section>
-    <h2>4. Difficultés rencontrées</h2>
-    <p>Problèmes rencontrés et solutions apportées.</p>
+    <h2>3. Composants utilisés</h2>
+
+    <h3>Raspberry Pi Pico</h3>
+    <p>
+        C'est le microcontrôleur principal. Il exécute le programme, lit les données du capteur,
+        traite les entrées du clavier et contrôle l'écran.
+    </p>
+
+    <h3>Breadboard</h3>
+    <p>
+        Elle permet de connecter les composants entre eux sans soudure.
+        Elle est utilisée pour tester et construire le circuit facilement.
+    </p>
+
+    <h3>Capteur à ultrasons (HC-SR04)</h3>
+    <p>
+        Ce capteur mesure la distance en envoyant une onde sonore et en calculant le temps
+        qu'elle met pour revenir après avoir touché un objet.
+    </p>
+
+    <h3>Clavier (4x3)</h3>
+    <p>
+        Il permet à l'utilisateur d'entrer sa réponse (la distance qu'il pense correcte).
+    </p>
+
+    <h3>Matrice LED (MAX7219 Dot Matrix)</h3>
+    <p>
+        Cet écran affiche les messages du jeu, comme "plus", "moins" ou "correct".
+    </p>
+
 </section>
 
 <section>
-    <h2>5. Conclusion</h2>
-    <p>Bilan du projet et perspectives d’amélioration.</p>
+    <h2>4. Fonctionnement</h2>
+    <p>
+        1. Le capteur mesure une distance.<br>
+        2. L'utilisateur entre une valeur sur le clavier.<br>
+        3. Le Raspberry Pi compare les deux valeurs.<br>
+        4. L'écran affiche le résultat.
+    </p>
+</section>
+
+<section>
+    <h2>5. Difficultés rencontrées</h2>
+    <p>
+        - Connexion des composants<br>
+        - Lecture du clavier<br>
+        - Précision du capteur<br>
+        - Affichage sur la matrice LED
+    </p>
+</section>
+
+<section>
+    <h2>6. Conclusion</h2>
+    <p>
+        Ce projet permet d'apprendre à utiliser plusieurs composants électroniques
+        et à créer un système interactif complet.
+    </p>
 </section>
 
 </body>
