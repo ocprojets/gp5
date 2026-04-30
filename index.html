@@ -1,126 +1,213 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Rapport de Projet Informatique</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f5f5f5;
-        }
-        header {
-            text-align: center;
-            padding: 20px;
-            background-color: #2c3e50;
-            color: white;
-            border-radius: 10px;
-        }
-        section {
-            background-color: white;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #2c3e50;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Distance Guess Game</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0f172a;
+    color: white;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 50px;
+    background: linear-gradient(135deg, #00eaff, #0077ff);
+    color: white;
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+/* SECTION */
+section {
+    padding: 50px 10%;
+}
+
+/* GRID POUR COMPOSANTS */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+/* CARTE */
+.card {
+    background: #1e293b;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* IMAGE */
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+/* TEXTE */
+.card-content {
+    padding: 15px;
+}
+
+.card-content h3 {
+    color: #00eaff;
+}
+
+/* SECTION TITRE */
+h2 {
+    text-align: center;
+    color: #00eaff;
+    margin-bottom: 30px;
+}
+
+/* CONCEPT */
+.concept {
+    text-align: center;
+    font-size: 1.2em;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #020617;
+    opacity: 0.7;
+}
+</style>
+
 </head>
+
 <body>
 
 <header>
-    <h1>Rapport de Projet Informatique</h1>
-    <p>Projet : Jeu de devinette de distance</p>
-    <p>Nom : Zak Meyer et Nicolas Dô Duc</p>
-    <p>Date : Ajourd'hui</p>
+    <h1>🎯 Distance Guess Game</h1>
+    <p>Projet Raspberry Pi Pico</p>
 </header>
 
 <section>
-    <h2>1. Introduction</h2>
-    <p>
-        Ce projet consiste à créer un jeu interactif avec un Raspberry Pi Pico.
-        L'utilisateur doit deviner une distance mesurée par un capteur.
+    <h2>🧠 Concept</h2>
+    <p class="concept">
+        Le système mesure une distance.  
+        L'utilisateur doit deviner cette distance.  
+        L'écran indique si la réponse est <b>plus grande</b>, <b>plus petite</b>  
+        ou <b>correcte (±2 cm)</b>.
     </p>
 </section>
 
 <section>
-    <h2>2. Description du projet</h2>
-    <p>
-        Le système mesure une distance grâce à un capteur à ultrasons.
-        L'utilisateur entre sa réponse à l'aide d'un clavier.
-    </p>
-    <p>
-        Ensuite, l'écran affiche :
-    </p>
-    <ul>
-        <li>Si la distance réelle est <b>plus grande</b></li>
-        <li>Si elle est <b>plus petite</b></li>
-        <li>Ou si la réponse est correcte (± 2 cm)</li>
-    </ul>
+    <h2>⚙️ Fonctionnement</h2>
+    <div class="grid">
+
+        <div class="card">
+            <div class="card-content">
+                <h3>📡 Mesure</h3>
+                <p>Le capteur à ultrasons mesure la distance.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>⌨️ Entrée</h3>
+                <p>L'utilisateur entre une valeur avec le clavier.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>🧠 Comparaison</h3>
+                <p>Le Pico compare la réponse avec la vraie distance.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-content">
+                <h3>💡 Résultat</h3>
+                <p>L'écran affiche le résultat (plus / moins / correct).</p>
+            </div>
+        </div>
+
+    </div>
 </section>
 
 <section>
-    <h2>3. Composants utilisés</h2>
+    <h2>🧩 Composants</h2>
 
-    <h3>Raspberry Pi Pico</h3>
-    <p>
-        C'est le microcontrôleur principal. Il exécute le programme, lit les données du capteur,
-        traite les entrées du clavier et contrôle l'écran.
-    </p>
+    <div class="grid">
 
-    <h3>Breadboard</h3>
-    <p>
-        Elle permet de connecter les composants entre eux sans soudure.
-        Elle est utilisée pour tester et construire le circuit facilement.
-    </p>
+        <div class="card">
+            <img src="images/pico.jpg" alt="Raspberry Pi Pico">
+            <div class="card-content">
+                <h3>Raspberry Pi Pico</h3>
+                <p>Le cerveau du projet. Il exécute le code et contrôle tous les composants.</p>
+            </div>
+        </div>
 
-    <h3>Capteur à ultrasons (HC-SR04)</h3>
-    <p>
-        Ce capteur mesure la distance en envoyant une onde sonore et en calculant le temps
-        qu'elle met pour revenir après avoir touché un objet.
-    </p>
+        <div class="card">
+            <img src="images/breadboard.jpg" alt="Breadboard">
+            <div class="card-content">
+                <h3>Breadboard</h3>
+                <p>Permet de connecter les composants sans soudure.</p>
+            </div>
+        </div>
 
-    <h3>Clavier (4x3)</h3>
-    <p>
-        Il permet à l'utilisateur d'entrer sa réponse (la distance qu'il pense correcte).
-    </p>
+        <div class="card">
+            <img src="images/ultrasonic.jpg" alt="Capteur HC-SR04">
+            <div class="card-content">
+                <h3>Capteur ultrasons</h3>
+                <p>Mesure la distance grâce aux ondes sonores.</p>
+            </div>
+        </div>
 
-    <h3>Matrice LED (MAX7219 Dot Matrix)</h3>
-    <p>
-        Cet écran affiche les messages du jeu, comme "plus", "moins" ou "correct".
-    </p>
+        <div class="card">
+            <img src="images/keypad.jpg" alt="Clavier 4x3">
+            <div class="card-content">
+                <h3>Clavier 4x3</h3>
+                <p>Permet à l'utilisateur d'entrer sa réponse.</p>
+            </div>
+        </div>
 
+        <div class="card">
+            <img src="images/matrix.jpg" alt="Matrice LED">
+            <div class="card-content">
+                <h3>Matrice LED MAX7219</h3>
+                <p>Affiche les messages du jeu (plus, moins, correct).</p>
+            </div>
+        </div>
+
+    </div>
 </section>
 
 <section>
-    <h2>4. Fonctionnement</h2>
-    <p>
-        1. Le capteur mesure une distance.<br>
-        2. L'utilisateur entre une valeur sur le clavier.<br>
-        3. Le Raspberry Pi compare les deux valeurs.<br>
-        4. L'écran affiche le résultat.
-    </p>
+    <h2>🚧 Difficultés</h2>
+    <div class="grid">
+
+        <div class="card"><div class="card-content">Connexion des composants</div></div>
+        <div class="card"><div class="card-content">Lecture du clavier</div></div>
+        <div class="card"><div class="card-content">Précision du capteur</div></div>
+        <div class="card"><div class="card-content">Affichage LED</div></div>
+
+    </div>
 </section>
 
-<section>
-    <h2>5. Difficultés rencontrées</h2>
-    <p>
-        - Connexion des composants<br>
-        - Lecture du clavier<br>
-        - Précision du capteur<br>
-        - Affichage sur la matrice LED
-    </p>
-</section>
-
-<section>
-    <h2>6. Conclusion</h2>
-    <p>
-        Ce projet permet d'apprendre à utiliser plusieurs composants électroniques
-        et à créer un système interactif complet.
-    </p>
-</section>
+<footer>
+    <p>Projet Informatique • 2026</p>
+    <p>Zak Meyer et Nicolas Dô Duc</p>
+</footer>
 
 </body>
 </html>
