@@ -2,211 +2,414 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Projet Netenya</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapport de Projet - Devine le Nombre</title>
 
 <style>
-body {
-    margin: 0;
+
+body{
+    margin:0;
     font-family: 'Segoe UI', sans-serif;
-    background: #0f172a;
-    color: white;
+    background:#0f172a;
+    color:white;
 }
 
 /* HEADER */
-header {
-    text-align: center;
-    padding: 50px;
-    background: linear-gradient(135deg, #00eaff, #0077ff);
-    color: white;
+
+header{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(135deg,#00c6ff,#0072ff);
+    padding:20px;
 }
 
-header h1 {
-    font-size: 3em;
-    margin: 0;
+header h1{
+    font-size:4em;
+    margin:0;
+}
+
+header p{
+    font-size:1.3em;
+    max-width:700px;
 }
 
 /* SECTION */
-section {
-    padding: 50px 10%;
+
+section{
+    padding:70px 10%;
 }
 
-/* GRID POUR COMPOSANTS */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+/* TITRES */
+
+h2{
+    text-align:center;
+    color:#00e5ff;
+    margin-bottom:40px;
+    font-size:2.2em;
 }
 
-/* CARTE */
-.card {
-    background: #1e293b;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-    transition: transform 0.3s;
+/* CARDS */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
 }
 
-.card:hover {
-    transform: translateY(-10px);
+.card{
+    background:#1e293b;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.5);
+    transition:0.3s;
 }
 
-/* IMAGE */
-.card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
+.card:hover{
+    transform:translateY(-10px);
 }
 
-/* TEXTE */
-.card-content {
-    padding: 15px;
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
 }
 
-.card-content h3 {
-    color: #00eaff;
+.card-content{
+    padding:20px;
 }
 
-/* SECTION TITRE */
-h2 {
-    text-align: center;
-    color: #00eaff;
-    margin-bottom: 30px;
+.card-content h3{
+    color:#00e5ff;
+    margin-top:0;
 }
 
-/* CONCEPT */
-.concept {
-    text-align: center;
-    font-size: 1.2em;
-    max-width: 800px;
-    margin: auto;
+/* ETAPES */
+
+.steps{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
+
+.step{
+    background:#1e293b;
+    padding:25px;
+    border-radius:20px;
+    width:220px;
+    text-align:center;
+    font-size:1.1em;
+}
+
+/* CODE */
+
+.code-box{
+    background:#020617;
+    padding:25px;
+    border-radius:20px;
+    overflow:auto;
+    font-family:monospace;
+    color:#00ff99;
+    max-height:400px;
 }
 
 /* FOOTER */
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #020617;
-    opacity: 0.7;
-}
-</style>
 
+footer{
+    background:#020617;
+    text-align:center;
+    padding:30px;
+    opacity:0.7;
+}
+
+</style>
 </head>
 
 <body>
 
 <header>
-    <h1>🎯 Distance Guess Game</h1>
-    <p>Projet Raspberry Pi Pico</p>
+    <h1>🎮 Devine le Nombre</h1>
+    <p>
+        Projet Raspberry Pi Pico utilisant un clavier, une matrice LED
+        et de la programmation Python pour créer un jeu interactif.
+    </p>
 </header>
 
 <section>
-    <h2>🧠 Concept</h2>
-    <p class="concept">
-        Le système mesure une distance.  
-        L'utilisateur doit deviner cette distance.  
-        L'écran indique si la réponse est <b>plus grande</b>, <b>plus petite</b>  
-        ou <b>correcte (±2 cm)</b>.
-    </p>
+
+<h2>🧠 Concept du Projet</h2>
+
+<div class="card">
+<div class="card-content">
+
+<p>
+L’ordinateur génère un nombre aléatoire entre <b>1 et 100</b>.
+Le joueur doit essayer de deviner ce nombre en utilisant le clavier.
+</p>
+
+<p>
+Le panneau LED affiche :
+</p>
+
+<ul>
+<li>⬆️ Une flèche vers le haut si le nombre entré est trop petit</li>
+<li>⬇️ Une flèche vers le bas si le nombre entré est trop grand</li>
+<li>😊 Un smiley lorsque le bon nombre est trouvé</li>
+</ul>
+
+</div>
+</div>
+
 </section>
 
 <section>
-    <h2>⚙️ Fonctionnement</h2>
-    <div class="grid">
 
-        <div class="card">
-            <div class="card-content">
-                <h3>📡 Mesure</h3>
-                <p>Le capteur à ultrasons mesure la distance.</p>
-            </div>
-        </div>
+<h2>⚙️ Fonctionnement du Jeu</h2>
 
-        <div class="card">
-            <div class="card-content">
-                <h3>⌨️ Entrée</h3>
-                <p>L'utilisateur entre une valeur avec le clavier.</p>
-            </div>
-        </div>
+<div class="steps">
 
-        <div class="card">
-            <div class="card-content">
-                <h3>🧠 Comparaison</h3>
-                <p>Le Pico compare la réponse avec la vraie distance.</p>
-            </div>
-        </div>
+<div class="step">
+🎲<br><br>
+Le Pico choisit un nombre aléatoire entre 1 et 100
+</div>
 
-        <div class="card">
-            <div class="card-content">
-                <h3>💡 Résultat</h3>
-                <p>L'écran affiche le résultat (plus / moins / correct).</p>
-            </div>
-        </div>
+<div class="step">
+⌨️<br><br>
+Le joueur écrit un nombre sur le keypad
+</div>
 
-    </div>
+<div class="step">
+🧠<br><br>
+Le programme compare les deux nombres
+</div>
+
+<div class="step">
+💡<br><br>
+Le panneau LED affiche un indice
+</div>
+
+<div class="step">
+🏆<br><br>
+Le joueur gagne lorsqu’il trouve le bon nombre
+</div>
+
+</div>
+
 </section>
 
 <section>
-    <h2>🧩 Composants</h2>
 
-    <div class="grid">
+<h2>🧩 Composants Utilisés</h2>
 
-        <div class="card">
-            <img src="images/pico.jpg" alt="Raspberry Pi Pico">
-            <div class="card-content">
-                <h3>Raspberry Pi Pico</h3>
-                <p>Le cerveau du projet. Il exécute le code et contrôle tous les composants.</p>
-            </div>
-        </div>
+<div class="grid">
 
-        <div class="card">
-            <img src="images/breadboard.jpg" alt="Breadboard">
-            <div class="card-content">
-                <h3>Breadboard</h3>
-                <p>Permet de connecter les composants sans soudure.</p>
-            </div>
-        </div>
+<div class="card">
+<img src="images/pico.jpg" alt="Raspberry Pi Pico">
 
-        <div class="card">
-            <img src="images/ultrasonic.jpg" alt="Capteur HC-SR04">
-            <div class="card-content">
-                <h3>Capteur ultrasons</h3>
-                <p>Mesure la distance grâce aux ondes sonores.</p>
-            </div>
-        </div>
+<div class="card-content">
+<h3>Raspberry Pi Pico</h3>
 
-        <div class="card">
-            <img src="images/keypad.jpg" alt="Clavier 4x3">
-            <div class="card-content">
-                <h3>Clavier 4x3</h3>
-                <p>Permet à l'utilisateur d'entrer sa réponse.</p>
-            </div>
-        </div>
+<p>
+C’est le cerveau du projet.
+Il exécute le programme Python et contrôle tous les composants.
+</p>
 
-        <div class="card">
-            <img src="images/matrix.jpg" alt="Matrice LED">
-            <div class="card-content">
-                <h3>Matrice LED MAX7219</h3>
-                <p>Affiche les messages du jeu (plus, moins, correct).</p>
-            </div>
-        </div>
+</div>
+</div>
 
-    </div>
+<div class="card">
+<img src="images/keypad.jpg" alt="Keypad">
+
+<div class="card-content">
+<h3>Clavier 4x3</h3>
+
+<p>
+Le keypad permet au joueur d’entrer ses nombres dans le jeu.
+</p>
+
+</div>
+</div>
+
+<div class="card">
+<img src="images/matrix.jpg" alt="MAX7219">
+
+<div class="card-content">
+<h3>MAX7219 LED Matrix</h3>
+
+<p>
+Le panneau LED affiche les symboles du jeu :
+flèche vers le haut, flèche vers le bas et smiley.
+</p>
+
+</div>
+</div>
+
+<div class="card">
+<img src="images/breadboard.jpg" alt="Breadboard">
+
+<div class="card-content">
+<h3>Breadboard</h3>
+
+<p>
+Elle permet de connecter les composants sans soudure.
+</p>
+
+</div>
+</div>
+
+</div>
+
 </section>
 
 <section>
-    <h2>🚧 Difficultés</h2>
-    <div class="grid">
 
-        <div class="card"><div class="card-content">Connexion des composants</div></div>
-        <div class="card"><div class="card-content">Lecture du clavier</div></div>
-        <div class="card"><div class="card-content">Précision du capteur</div></div>
-        <div class="card"><div class="card-content">Affichage LED</div></div>
+<h2>💻 Explication du Code</h2>
 
-    </div>
+<div class="grid">
+
+<div class="card">
+<div class="card-content">
+
+<h3>🎲 Nombre Aléatoire</h3>
+
+<p>
+Le programme utilise :
+</p>
+
+<pre>
+urandom.randint(1,100)
+</pre>
+
+<p>
+pour générer un nombre secret.
+</p>
+
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+
+<h3>⌨️ Lecture du Keypad</h3>
+
+<p>
+Le programme détecte les touches pressées sur le clavier
+pour construire le nombre du joueur.
+</p>
+
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+
+<h3>💡 Affichage LED</h3>
+
+<p>
+Des images 8x8 sont stockées dans des tableaux binaires
+et envoyées à la matrice LED.
+</p>
+
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+
+<h3>🏆 Conditions de Victoire</h3>
+
+<p>
+Le programme compare la réponse du joueur avec le nombre secret
+et affiche l’indice correspondant.
+</p>
+
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>🚧 Difficultés Rencontrées</h2>
+
+<div class="grid">
+
+<div class="card">
+<div class="card-content">
+<h3>🔌 Connexions</h3>
+<p>
+Brancher correctement tous les composants.
+</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>⌨️ Lecture du Clavier</h3>
+<p>
+Détecter correctement les touches appuyées.
+</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>💡 Affichage des Symboles</h3>
+<p>
+Créer les flèches et le smiley en format 8x8.
+</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-content">
+<h3>🐞 Débogage</h3>
+<p>
+Corriger les bugs du programme et des branchements.
+</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>🏁 Conclusion</h2>
+
+<div class="card">
+<div class="card-content">
+
+<p>
+Ce projet nous a permis d’apprendre :
+</p>
+
+<ul>
+<li>La programmation en Python sur Raspberry Pi Pico</li>
+<li>L’utilisation d’un keypad</li>
+<li>Le contrôle d’une matrice LED</li>
+<li>La logique des jeux interactifs</li>
+<li>Le travail avec des composants électroniques</li>
+</ul>
+
+<p>
+Le résultat final est un jeu simple, interactif et amusant.
+</p>
+
+</div>
+</div>
+
 </section>
 
 <footer>
-    <p>Projet Informatique • 2026</p>
-    <p>Zak Meyer et Nicolas Dô Duc</p>
+Projet Informatique • Raspberry Pi Pico • 2026
 </footer>
 
 </body>
